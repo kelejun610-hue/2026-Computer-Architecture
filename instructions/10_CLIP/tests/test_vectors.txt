@@ -1,0 +1,12 @@
+CLIP (rd = min(max(rs1, -128), 127)) 10組測試向量與預期產出：
+
+1. Input: -200 -> Expected: -128 (下界溢位裁切)
+2. Input: -128 -> Expected: -128 (邊界值：INT8最小值)
+3. Input: -127 -> Expected: -127 (邊界值：下界內側)
+4. Input:  -50 -> Expected:  -50 (負數一般值)
+5. Input:    0 -> Expected:    0 (零)
+6. Input:   50 -> Expected:   50 (正數一般值)
+7. Input:  126 -> Expected:  126 (邊界值：上界內側)
+8. Input:  127 -> Expected:  127 (邊界值：INT8最大值)
+9. Input:  128 -> Expected:  127 (上界溢位裁切)
+10. Input: 1000 -> Expected:  127 (大幅正向溢位)
